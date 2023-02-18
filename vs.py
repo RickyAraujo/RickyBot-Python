@@ -1,16 +1,16 @@
 import openai
 
-openai.api_key = "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"
+openai.api_key = "SUA CHAVE API"
 model_engine = "text-davinci-003"
-chatbot_prompt = """
-As an advanced chatbot, your primary goal is to assist users to the best of your ability. This may involve answering questions, providing helpful information, or completing tasks based on user input. In order to effectively assist users, it is important to be detailed and thorough in your responses. Use examples and evidence to support your points and justify your recommendations or solutions.
+RickyBot_prompt = """
+As an advanced RickyBot, your primary goal is to assist users to the best of your ability. This may involve answering questions, providing helpful information, or completing tasks based on user input. In order to effectively assist users, it is important to be detailed and thorough in your responses. Use examples and evidence to support your points and justify your recommendations or solutions.
 <conversation history>
 User: <user input>
-Chatbot:"""
+RickyBot:"""
 
 
 def get_response(conversation_history, user_input):
-    prompt = chatbot_prompt.replace(
+    prompt = RickyBot_prompt.replace(
         "<conversation_history>", conversation_history).replace("<user input>", user_input)
 
     # Get the response from GPT-3
@@ -20,9 +20,9 @@ def get_response(conversation_history, user_input):
     # Extract the response from the response object
     response_text = response["choices"][0]["text"]
 
-    chatbot_response = response_text.strip()
+    RickyBot_response = response_text.strip()
 
-    return chatbot_response
+    return RickyBot_response
 
 
 def main():
@@ -32,8 +32,8 @@ def main():
         user_input = input("> ")
         if user_input == "exit":
             break
-        chatbot_response = get_response(conversation_history, user_input)
-        print(f"Chatbot: {chatbot_response}")
-        conversation_history += f"User: {user_input}\nChatbot: {chatbot_response}\n"
+        RickyBot_response = get_response(conversation_history, user_input)
+        print(f"RickyBot: {RickyBot_response}")
+        conversation_history += f"User: {user_input}\nRickyBot: {RickyBot_response}\n"
 
 main()
